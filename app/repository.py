@@ -20,7 +20,7 @@ class ListingRepository:
                 available_from="Available now",
                 description="Good for IT professionals. Gated society, lift, backup power and bike parking.",
                 owner_name="Amit Kulkarni",
-                phone="9876543210",
+                phone="98765432",
                 posted_label="Posted today",
             ),
             RentalListing(
@@ -34,7 +34,7 @@ class ListingRepository:
                 available_from="Available in 1 week",
                 description="Near metro and schools. Includes wardrobes, sofa, geyser and covered parking.",
                 owner_name="Neha Deshpande",
-                phone="9823011122",
+                phone="98230111",
                 posted_label="Posted 2 days ago",
             ),
             RentalListing(
@@ -48,7 +48,7 @@ class ListingRepository:
                 available_from="Available now",
                 description="Close to colleges and Phoenix Mall. Best for students or working bachelors.",
                 owner_name="Sana Shaikh",
-                phone="9764458899",
+                phone="97644588",
                 posted_label="Posted today",
             ),
             RentalListing(
@@ -62,7 +62,7 @@ class ListingRepository:
                 available_from="Available next month",
                 description="Spacious flat with balcony, security and children's play area.",
                 owner_name="Rohit Jagtap",
-                phone="9890012345",
+                phone="98900123",
                 posted_label="Posted 3 days ago",
             ),
             RentalListing(
@@ -76,7 +76,7 @@ class ListingRepository:
                 available_from="Available now",
                 description="Budget-friendly option with separate bathroom and easy commute to Aundh and Balewadi.",
                 owner_name="Priya Patil",
-                phone="9922447788",
+                phone="99224477",
                 posted_label="Posted yesterday",
             ),
         ]
