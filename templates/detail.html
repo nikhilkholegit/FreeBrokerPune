@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{{ listing.title }} | Pune Rent Connect{% endblock %}
+
+{% block content %}
+<section class="container detail-shell">
+    <a href="/" class="back-link">Back to listings</a>
+
+    <div class="detail-card">
+        <div class="detail-hero">
+            <div>
+                <p class="listing-area">{{ listing.area }}</p>
+                <h1>{{ listing.title }}</h1>
+                <p class="hero-copy">{{ listing.description }}</p>
+            </div>
+            <div class="detail-price">
+                <strong>Rs {{ listing.rent }}/month</strong>
+                <span>Deposit Rs {{ listing.deposit }}</span>
+            </div>
+        </div>
+
+        <div class="detail-grid">
+            <section class="detail-section">
+                <h2>Property details</h2>
+                <div class="meta-wrap">
+                    <span class="meta-chip">{{ listing.bhk }}</span>
+                    <span class="meta-chip">{{ listing.furnishing }}</span>
+                    <span class="meta-chip">{{ listing.available_from }}</span>
+                    <span class="meta-chip">{{ listing.posted_label }}</span>
+                </div>
+            </section>
+
+            <aside class="owner-card">
+                <h2>Owner contact</h2>
+                <p><strong>{{ listing.owner_name }}</strong></p>
+                <p>{{ listing.phone }}</p>
+                <div class="contact-actions stacked">
+                    <a href="tel:{{ listing.phone }}">Call owner</a>
+                    <a href="https://wa.me/91{{ listing.phone }}" target="_blank" rel="noreferrer">Open WhatsApp</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+{% endblock %}
