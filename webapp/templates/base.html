@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pune Rent Connect{% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a href="/" class="brand">Pune Rent Connect</a>
+            <nav class="nav-links">
+                <a href="/">Browse Homes</a>
+                <a href="/post" class="nav-cta">Post Property</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

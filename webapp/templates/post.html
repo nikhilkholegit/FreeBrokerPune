@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Post Property | Pune Rent Connect{% endblock %}
+
+{% block content %}
+<section class="container form-shell">
+    <div class="section-head">
+        <h1>Post your house for rent</h1>
+        <a href="/">Back to browse</a>
+    </div>
+
+    {% if errors %}
+    <div class="error-box">
+        {% for error in errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form action="/post" method="post" class="property-form">
+        <label>
+            <span>Listing title</span>
+            <input type="text" name="title" value="{{ values.get('title', '') }}" required>
+        </label>
+
+        <label>
+            <span>Pune area</span>
+            <input type="text" name="area" list="areas" value="{{ values.get('area', '') }}" required>
+            <datalist id="areas">
+                {% for area_name in areas %}
+                <option value="{{ area_name }}"></option>
+                {% endfor %}
+            </datalist>
+        </label>
+
+        <div class="form-grid">
+            <label>
+                <span>Monthly rent</span>
+                <input type="number" name="rent" min="1" value="{{ values.get('rent', '') }}" required>
+            </label>
+
+            <label>
+                <span>Security deposit</span>
+                <input type="number" name="deposit" min="0" value="{{ values.get('deposit', '') }}" required>
+            </label>
+        </div>
+
+        <div class="form-grid">
+            <label>
+                <span>BHK / Property type</span>
+                <input type="text" name="bhk" value="{{ values.get('bhk', '') }}" required>
+            </label>
+
+            <label>
+                <span>Furnishing</span>
+                <input type="text" name="furnishing" value="{{ values.get('furnishing', '') }}" required>
+            </label>
+        </div>
+
+        <label>
+            <span>Availability</span>
+            <input type="text" name="available_from" value="{{ values.get('available_from', '') }}" required>
+        </label>
+
+        <label>
+            <span>Description</span>
+            <textarea name="description" rows="5" required>{{ values.get('description', '') }}</textarea>
+        </label>
+
+        <div class="form-grid">
+            <label>
+                <span>Owner name</span>
+                <input type="text" name="owner_name" value="{{ values.get('owner_name', '') }}" required>
+            </label>
+
+            <label>
+                <span>Phone number</span>
+                <input type="tel" name="phone" value="{{ values.get('phone', '') }}" required>
+            </label>
+        </div>
+
+        <button type="submit" class="submit-btn">Publish listing</button>
+    </form>
+</section>
+{% endblock %}

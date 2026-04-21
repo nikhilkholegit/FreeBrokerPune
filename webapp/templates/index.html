@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Browse Homes | Pune Rent Connect{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-grid">
+        <div>
+            <p class="eyebrow">Pune rentals made simpler</p>
+            <h1>Find houses for rent and contact owners directly.</h1>
+            <p class="hero-copy">
+                This prototype helps people discover rental homes across Pune, filter by area,
+                and connect with landlords on call or WhatsApp.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-label">Homes visible</span>
+                    <strong>{{ featured_count }}</strong>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Popular areas</span>
+                    <strong>Baner, Hinjewadi, Kothrud</strong>
+                </div>
+            </div>
+        </div>
+        <div class="hero-panel">
+            <form action="/" method="get" class="search-form">
+                <label>
+                    <span>Search locality or type</span>
+                    <input type="text" name="q" value="{{ query }}" placeholder="Baner, 1 BHK, Studio">
+                </label>
+                <label>
+                    <span>Area</span>
+                    <select name="area">
+                        {% for area_name in areas %}
+                        <option value="{{ area_name }}" {% if selected_area == area_name %}selected{% endif %}>{{ area_name }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <button type="submit">Search homes</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="container filters-row">
+    {% for area_name in areas %}
+    <a
+        href="/?area={{ area_name }}"
+        class="chip {% if selected_area == area_name and not query %}chip-active{% endif %}"
+    >
+        {{ area_name }}
+    </a>
+    {% endfor %}
+</section>
+
+<section class="container listings-section">
+    <div class="section-head">
+        <h2>{{ listings|length }} homes available in Pune</h2>
+        <a href="/post">List your property</a>
+    </div>
+
+    <div class="listing-grid">
+        {% for listing in listings %}
+        <article class="listing-card">
+            <div class="listing-top">
+                <div>
+                    <p class="listing-area">{{ listing.area }}</p>
+                    <h3>{{ listing.title }}</h3>
+                </div>
+                <div class="rent-pill">Rs {{ listing.rent }}/mo</div>
+            </div>
+
+            <div class="meta-wrap">
+                <span class="meta-chip">{{ listing.bhk }}</span>
+                <span class="meta-chip">{{ listing.furnishing }}</span>
+                <span class="meta-chip">Deposit Rs {{ listing.deposit }}</span>
+                <span class="meta-chip">{{ listing.available_from }}</span>
+            </div>
+
+            <p class="listing-description">{{ listing.description }}</p>
+
+            <div class="contact-box">
+                <div>
+                    <strong>{{ listing.owner_name }}</strong>
+                    <p>{{ listing.phone }}</p>
+                    <small>{{ listing.posted_label }}</small>
+                </div>
+                <div class="contact-actions">
+                    <a href="tel:{{ listing.phone }}">Call</a>
+                    <a href="https://wa.me/91{{ listing.phone }}" target="_blank" rel="noreferrer">WhatsApp</a>
+                    <a href="/listings/{{ listing.id }}" class="link-muted">View</a>
+                </div>
+            </div>
+        </article>
+        {% else %}
+        <article class="empty-state">
+            <h3>No homes match your filters.</h3>
+            <p>Try another area or search term, or post a new listing.</p>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
